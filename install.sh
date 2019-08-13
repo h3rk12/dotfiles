@@ -2,7 +2,7 @@
 
 DOT_FILES=$(cd $(dirname $0); pwd)
 
-cd $DIT_FILES
+cd $DOT_FILES
 
 for f in .??*
 do
