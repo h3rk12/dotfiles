@@ -49,13 +49,13 @@ set shiftwidth=2
 " window
 nnoremap ss :split
 nnoremap sv :vsplit
-noremap sj <C-w>j
+nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
-noremap st :tabnew
-noremap sn gt
-noremap sp gT
+nnoremap st :tabnew
+nnoremap sn gt
+nnoremap sp gT
 
 "dein Scripts-----------------------------
 
