@@ -47,15 +47,23 @@ set tabstop=2
 set shiftwidth=2
 
 " window
-nnoremap ss :split
-nnoremap sv :vsplit
+" nnoremap ss :split
+" nnoremap sv :vsplit
+nnoremap s <Nop>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
-nnoremap st :tabnew
+nnoremap st <C-u>tabnew<CR>
 nnoremap sn gt
 nnoremap sp gT
+nnoremap sq :<C-u>q<CR>
+nnoremap sf :<C-u>Vaffle<CR>
+
+let mapleader = "\<Space>"
+nnoremap <Leader>o :CtrlP<CR>
 
 "dein Scripts-----------------------------
 
@@ -83,6 +91,9 @@ if dein#load_state('$HOME/.cache/dein')
     \ 'on_ft': ['javascript', 'typescript', 'vue', 'css', 'scss', 'json', 'markdown']
     \ })
  
+  let g:vaffle_show_hidden_files = 1
+  call dein#add('cocopon/vaffle.vim')
+
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
