@@ -61,7 +61,7 @@ nnoremap st <C-u>tabnew<CR>
 nnoremap sn gt
 nnoremap sp gT
 nnoremap sq :<C-u>q<CR>
-nnoremap sf :<C-u>Vaffle<CR>
+nnoremap sf :<C-u>Dirvish<CR>
 
 let mapleader = "\<Space>"
 nnoremap <Leader>o :CtrlP<CR>
@@ -84,29 +84,18 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  call dein#add('leafgarland/typescript-vim')
   call dein#add('itchyny/lightline.vim')
   call dein#add('AlessandroYorba/Sierra')
+  call dein#add('justinmk/vim-dirvish')
+
+  let g:prettier#autoformat = 0
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
   call dein#add('prettier/vim-prettier', {
     \ 'build': 'yarn install',
     \ 'on_ft': ['javascript', 'typescript', 'vue', 'css', 'scss', 'json', 'markdown']
     \ })
- 
-  let g:vaffle_show_hidden_files = 1
-  call dein#add('cocopon/vaffle.vim')
 
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  let g:deoplete#enable_at_startup = 1
-
-  call dein#add('carlitux/deoplete-ternjs', {
-    \ 'build': 'yarn add tern'
-    \ })
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('neoclide/coc.nvim', { 'merge': 0, 'rev': 'release' })
 
   " Required:
   call dein#end()
