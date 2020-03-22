@@ -2,6 +2,10 @@ source ~/.zplug/init.zsh
 
 # settings
 HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+
+setopt hist_ignore_dups
 setopt share_shitory
 
 # zplug
@@ -51,9 +55,6 @@ function select-history() {
 }
 zle -N select-history
 bindkey '^r' select-history
-
-# settings
-setopt share_history
 
 # alias
 alias ..='cd ..'
