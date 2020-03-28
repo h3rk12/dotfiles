@@ -1,12 +1,14 @@
 source ~/.zplug/init.zsh
 
 # settings
+
+# history
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
-
 setopt hist_ignore_dups
-setopt share_shitory
+setopt share_history
+setopt inc_append_history
 
 # zplug
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'

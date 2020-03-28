@@ -66,6 +66,8 @@ nnoremap sf :<C-u>Dirvish<CR>
 let mapleader = "\<Space>"
 nnoremap <Leader>o :CtrlP<CR>
 
+nnoremap <silent><C-n> :NERDTreeToggle<CR>
+
 "dein Scripts-----------------------------
 
 if &compatible
@@ -96,6 +98,8 @@ if dein#load_state('$HOME/.cache/dein')
     \ })
 
   call dein#add('neoclide/coc.nvim', { 'merge': 0, 'rev': 'release' })
+
+  call dein#add('preservim/nerdtree')
 
   " Required:
   call dein#end()
