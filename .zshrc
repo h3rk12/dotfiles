@@ -1,5 +1,9 @@
 source ~/.zplug/init.zsh
 
+if [ $SHLVL = 1 ]; then
+  tmux a
+fi
+
 # settings
 
 # history
