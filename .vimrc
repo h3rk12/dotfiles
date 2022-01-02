@@ -68,56 +68,26 @@ nnoremap <Leader>o :CtrlP<CR>
 
 nnoremap <silent><C-n> :NERDTreeToggle<CR>
 
-"dein Scripts-----------------------------
+" vim-plug
 
-if &compatible
-  set nocompatible " Be iMproved
-endif
+call plug#begin()
 
-" Required:
-set rtp+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+Plug 'itchyny/lightline.vim'
+Plug 'AlessandroYorba/Sierra'
+Plug 'justinmk/vim-dirvish'
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'preservim/nerdtree'
 
-" Required:
-if dein#load_state('$HOME/.cache/dein')
-  call dein#begin('$HOME/.cache/dein')
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+Plug 'prettier/vim-prettier', {
+\ 'build': 'yarn install',
+\ 'on_ft': ['javascript', 'typescript', 'vue', 'css', 'scss', 'json', 'markdown']
+\ }
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
-
-  " Add or remove your plugins here:
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('AlessandroYorba/Sierra')
-  call dein#add('justinmk/vim-dirvish')
-
-  let g:prettier#autoformat = 0
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-  call dein#add('prettier/vim-prettier', {
-    \ 'build': 'yarn install',
-    \ 'on_ft': ['javascript', 'typescript', 'vue', 'css', 'scss', 'json', 'markdown']
-    \ })
-
-  call dein#add('neoclide/coc.nvim', { 'merge': 0, 'rev': 'release' })
-
-  call dein#add('preservim/nerdtree')
-
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
-
-" Required:
-filetype plugin indent on
-syntax enable
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
-"End dein Scripts-------------------------
+call plug#end()
 
 " coloscheme
 syntax on
 let g:sierra_Sunset = 1
 colorscheme sierra
-
