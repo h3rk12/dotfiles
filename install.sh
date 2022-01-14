@@ -4,6 +4,8 @@ DOT_FILES=$(cd $(dirname $0); pwd)
 
 cd $DOT_FILES
 
+# Bunch of symlinks
+
 for f in .??*
 do
   [ "$f" = ".git" ] && continue
@@ -11,21 +13,16 @@ do
   ln -snfv "$DOT_FILES/$f" "$HOME"/"$f"
 done
 
-# for fish
-cd $DOT_FILES/fish
+ln -sfv "$DOT_FILES/fish" "$HOME/.config/fish"
+ln -sfv "$HOME/.vimrc" "$HOME/.config/nvim/init.vim"
 
-for f in *
-do
-  ln -snfv "$(pwd)/$f" "$HOME/.config/fish/$f"
-done
+# Package managers & packages
 
-cd -
+. "$DOTFILES_DIR/install/brew.sh"
+. "$DOTFILES_DIR/install/bash.sh"
+. "$DOTFILES_DIR/install/node.sh"
+. "$DOTFILES_DIR/install/vundle.sh"
 
-# for vim
-# cd $HOME/.vim
-
-# for f in *
-# do
-#   ln -snfv "$(pwd)/$f" "$HOME/.config/nvim/$f"
-# done
-ln -snfv ~/.vimrc ~/.config/nvim/init.vim
+if [ "$(uname)" == "Darwin" ]; then
+    . "$DOTFILES_DIR/install/brew-cask.sh"
+fi
