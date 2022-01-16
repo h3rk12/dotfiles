@@ -7,6 +7,7 @@ brew upgrade
 # Install packages
 
 apps=(
+  dockutil
   fish
   fzf
   git
