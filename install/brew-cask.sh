@@ -10,6 +10,7 @@ apps=(
   google-japanese-ime
   itsycal
   visual-studio-code
+  slack
 )
 
 brew install "${apps[@]}" --cask
