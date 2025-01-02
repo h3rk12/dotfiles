@@ -128,3 +128,87 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
+# Aliasses
+abbr -S -='cd -'
+abbr -S ...='../..'
+abbr -S ....='../../..'
+
+# Git
+abbr -S g='git'
+
+abbr -S ga='git add'
+abbr -S gaa='git add --all'
+
+abbr -S gb='git branch'
+abbr -S gba='git branch -a'
+abbr -S gbd='git branch -d'
+
+abbr -S gbl='git blame -b -w'
+
+abbr -S gc='git commit -v'
+abbr -S gc!='git commit -v --amend'
+abbr -S gca='git commit -a -v'
+abbr -S gca!='git commit -a -v --amend'
+abbr -S gcm='git commit -m'
+
+abbr -S gcl='git clone --recurse-submodules'
+
+abbr -S gco='git checkout'
+abbr -S gcob='git checkout -b'
+abbr -S gcom='git checkout (git_main_branch)'
+
+abbr -S gcp='git cherry-pick'
+abbr -S gcpa='git cherry-pick --abort'
+abbr -S gcpc='git cherry-pick --continue'
+
+abbr -S gd='git diff'
+
+abbr -S gf='git fetch'
+abbr -S gfa='git fetch --all --prune'
+abbr -S gfo='git fetch origin'
+
+abbr -S gl='git log'
+abbr -S gls='git log --stat'
+abbr -S glsp='git log --stat -p'
+abbr -S glg='git log --graph'
+abbr -S glgda='git log --graph --decorate --all'
+abbr -S glgm='git log --graph --max-count=10'
+abbr -S glo='git log --oneline --decorate'
+abbr -S glog='git log --oneline --decorate --graph'
+abbr -S gloga='git log --oneline --decorate --graph --all'
+
+abbr -S gm='git merge'
+abbr -S gma='git merge --abort'
+
+abbr -S gp='git push'
+abbr -S gpf='git push --force-with-lease'
+abbr -S gpf!='git push --force'
+
+abbr -S gpl='git pull'
+abbr -S gplo='git pull origin'
+
+abbr -S grb='git rebase'
+abbr -S grba='git rebase --abort'
+abbr -S grbc='git rebase --continue'
+abbr -S grbi='git rebase -i'
+abbr -S grbo='git rebase --onto'
+abbr -S grbs='git rebase --skip'
+
+abbr -S grs='git reset'
+abbr -S grs!='git reset --hard'
+abbr -S grsh='git reset HEAD'
+abbr -S grsh!='git reset HEAD --hard'
+
+abbr -S grm='git rm'
+
+abbr -S gs='git status'
+
+abbr -S gst='git stash'
+abbr -S gsta='git stash apply'
+abbr -S gstc='git stash clear'
+abbr -S gstd='git stash drop'
+abbr -S gstl='git stash list'
+abbr -S gstp='git stash pop'
+abbr -S gsts='git stash save'
+
+abbr -S gsu='git submodule update'
