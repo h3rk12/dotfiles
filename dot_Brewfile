@@ -6,6 +6,7 @@ brew "bat"
 brew "ripgrep"
 brew "tmux"
 brew "volta"
+brew "neovim"
 
 cask "1password"
 cask "bartender"
