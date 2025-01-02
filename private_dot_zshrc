@@ -129,6 +129,8 @@ unset key
 # }}} End configuration added by Zim install
 
 # Aliasses
+alias cat='nocorrect bat'
+
 abbr -S -='cd -'
 abbr -S ...='../..'
 abbr -S ....='../../..'
