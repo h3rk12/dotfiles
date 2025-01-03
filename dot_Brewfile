@@ -7,6 +7,7 @@ brew "ripgrep"
 brew "tmux"
 brew "volta"
 brew "neovim"
+brew "font-hackgen"
 
 cask "1password"
 cask "bartender"
@@ -18,4 +19,5 @@ cask "google-japanese-ime"
 cask "raycast"
 cask "slack"
 cask "visual-studio-code"
+cask "alacritty"
 
