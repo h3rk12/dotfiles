@@ -8,6 +8,7 @@ brew "tmux"
 brew "volta"
 brew "neovim"
 brew "font-hackgen"
+brew "ncurses"
 
 cask "1password"
 cask "bartender"
