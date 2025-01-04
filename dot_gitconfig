@@ -1,0 +1,28 @@
+[core]
+  editor = nvim
+  pager = delta
+
+[alias]
+  co = !git branch -a | fzf | xargs git checkout
+  push-f = push --force-with-lease
+  tree = log --all --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by "%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = zdiff3
+
+[diff]
+  colorMoved = dimmed_zebra
+
+[delta]
+   navigate = true
+
+[push]
+	autoSetupRemote = true
+  default = current
+
+[include]
+  path = ~/.gitconfig_user
+
