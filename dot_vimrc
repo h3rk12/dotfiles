@@ -6,6 +6,7 @@ set tabstop=2
 set shiftwidth=2
 set laststatus=2
 set showmatch
+set matchtime=1
 set smartindent
 set wrapscan
 set hlsearch
@@ -22,6 +23,9 @@ set splitright
 set incsearch
 set ignorecase
 set smartcase
+set termguicolors
+
+colorscheme murphy
 
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
