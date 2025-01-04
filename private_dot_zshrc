@@ -130,6 +130,8 @@ unset key
 
 # Aliasses
 alias cat='nocorrect bat'
+alias ls='eza --color=always --group-directories-first'
+alias ll='eza -lF --git'
 
 abbr -S -='cd -'
 abbr -S ...='../..'

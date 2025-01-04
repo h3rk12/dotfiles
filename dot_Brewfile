@@ -10,6 +10,7 @@ brew "neovim"
 brew "font-hackgen"
 brew "ncurses"
 brew "git-delta"
+brew "fd"
 
 cask "1password"
 cask "bartender"
