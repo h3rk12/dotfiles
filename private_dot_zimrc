@@ -57,4 +57,5 @@ zmodule zsh-users/zsh-autosuggestions
 zmodule fzf
 zmodule exa
 zmodule olets/zsh-abbr
+zmodule https://github.com/agkozak/zsh-z
 
