@@ -1,0 +1,17 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+ read -n1 -p "Do you install Homebrew? (y/N): " yn
+ case "$yn" in
+   [yY]*) /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)";;
+   *) echo "abort";;
+esac
+
+ read -n1 -p "Run brew bundle? (y/N): " yn
+ case "$yn" in
+   [yY]*) brew bundle --file="$HOME/.Brewfile";;
+   *) echo "abort";;
+esac
+
+{{ end -}}
+

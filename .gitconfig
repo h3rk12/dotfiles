@@ -1,8 +1,0 @@
-[user]
-  name = "Hiroki Ishiwatari"
-  email = "dev.ish1r0k1@gmail.com"
-[alias]
-  co = !git branch -a | fzf | xargs git checkout
-	push-f = push --force-with-lease
-[push]
-	default = current

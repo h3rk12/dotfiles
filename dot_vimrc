@@ -1,0 +1,33 @@
+set encoding=utf-8
+set fileencodings=utf-8,euc-jp,cp932
+set clipboard+=unnamed
+set backspace=indent,eol,start
+set tabstop=2
+set shiftwidth=2
+set laststatus=2
+set showmatch
+set matchtime=1
+set smartindent
+set wrapscan
+set hlsearch
+set showcmd
+set title
+set number
+set cursorline
+set nofoldenable
+set noswapfile
+set virtualedit=onemore
+set expandtab
+set splitbelow
+set splitright
+set incsearch
+set ignorecase
+set smartcase
+set termguicolors
+
+colorscheme murphy
+
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+
+syntax on
+filetype plugin indent on
