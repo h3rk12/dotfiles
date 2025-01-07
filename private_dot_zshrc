@@ -94,22 +94,31 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # ------------------
 
 ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-# Download zimfw plugin manager if missing.
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  if (( ${+commands[curl]} )); then
-    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+
+# Initialize zsh-defer.
+source ${ZIM_HOME}/modules/zsh-defer/zsh-defer.plugin.zsh
+
+# don't defer loading the following plugins
+skip_defer=(environment utility asciiship)
+
+for zline in ${(f)"$(<$ZIM_HOME/init.zsh)"}; do
+  if [[ $zline == source* ]]; then
+    skip_source=0
+    for skip in "${skip_defer[@]}"; do
+      if [[ $zline == *"/modules/$skip/"* ]]; then
+        skip_source=1
+        break
+      fi
+    done
+    if [[ $skip_source -eq 0 ]]; then
+      zsh-defer -c "${zline}"
+    else
+      eval "${zline}"
+    fi
   else
-    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    eval "${zline}"
   fi
-fi
-# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init -q
-fi
-# Initialize modules.
-source ${ZIM_HOME}/init.zsh
+done
 
 # ------------------------------
 # Post-init module configuration
@@ -132,6 +141,11 @@ unset key
 alias cat='nocorrect bat'
 alias ls='eza --color=always --group-directories-first'
 
-abbr -q -S -='cd -'
-abbr -q -S ...='../..'
-abbr -q -S ....='../../..'
+function add-abbr() {
+  abbr -q -S -='cd -'
+  abbr -q -S ...='../..'
+  abbr -q -S ....='../../..'
+}
+
+zsh-defer add-abbr
+
