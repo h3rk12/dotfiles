@@ -1,0 +1,6 @@
+[{
+  "bindings": {
+    "cmd-q": null,
+    "cmd-q cmd-q": "zed::Quit"
+  }
+}]
