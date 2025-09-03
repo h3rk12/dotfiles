@@ -1,6 +1,14 @@
-[{
-  "bindings": {
-    "cmd-q": null,
-    "cmd-q cmd-q": "zed::Quit"
+[
+  {
+    "bindings": {
+      "cmd-q": null,
+      "cmd-q cmd-q": "zed::Quit"
+    }
+  },
+  {
+    "context": "EmptyPane",
+    "bindings": {
+      "cmd-w": null
+    }
   }
-}]
+]

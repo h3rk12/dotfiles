@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "format_on_save": "off",
   "buffer_font_family": "Intel One Mono",
   "buffer_font_fallbacks": ["HackGen35"],
   "buffer_font_features": {
@@ -15,7 +16,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Monokai Charcoal (purple)"
+    "dark": "Dracula Solid"
   },
   "base_keymap": "SublimeText",
   "indent_guides": {
@@ -51,10 +52,23 @@
           "rangeVariableTypes": true
         }
       }
+    },
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
     }
   },
   "inlay_hints": {
     "enabled": true,
     "show_type_hints": false
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "formatter": {
+    "language_server": {
+      "name": "biome"
+    }
   }
 }
