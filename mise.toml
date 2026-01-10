@@ -1,0 +1,7 @@
+[tools]
+gemini-cli = "latest"
+pnpm = "latest"
+uv = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
+"npm:@google/gemini-cli" = "latest"
+
