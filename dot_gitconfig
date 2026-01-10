@@ -1,6 +1,11 @@
 [core]
   editor = nvim
   pager = delta
+  fsmonitor = true
+  untrackedCache = true
+
+[column]
+  ui = auto
 
 [alias]
   co = !git branch -a | fzf | xargs git checkout
@@ -15,14 +20,29 @@
 
 [diff]
   colorMoved = dimmed_zebra
+  algorithm = histogram
+  renames = true
+  external = difft
 
 [delta]
    navigate = true
 
 [push]
 	autoSetupRemote = true
-  default = current
+  default = simple
+
+[fetch]
+  prune = true
+  pruneTags = true
+
+[rerere]
+  enabled = true
+  autoupdate = true
 
 [include]
   path = ~/.gitconfig_user
 
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
