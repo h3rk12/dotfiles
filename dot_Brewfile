@@ -5,6 +5,7 @@ tap "nikitabobko/tap"
 tap "oven-sh/bun"
 
 brew "asdf"
+brew "atuin"
 brew "bat"
 brew "chezmoi"
 brew "difftastic"
