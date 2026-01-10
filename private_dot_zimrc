@@ -57,6 +57,8 @@ zmodule zsh-users/zsh-autosuggestions
 zmodule romkatv/zsh-defer -d
 zmodule exa
 zmodule olets/zsh-abbr
-zmodule https://github.com/agkozak/zsh-z
+zmodule agkozak/zsh-z
 zmodule ohmyzsh/ohmyzsh --root plugins/git
+zmodule joke/zim-mise
+zmodule h3rk12/zim-atuin
 
