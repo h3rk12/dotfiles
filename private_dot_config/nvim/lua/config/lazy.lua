@@ -29,68 +29,75 @@ require("lazy").setup({
     "justinmk/vim-dirvish",
     {
       'neovim/nvim-lspconfig',
+      dependencies = {
+        'hrsh7th/cmp-nvim-lsp',
+      },
       config = function()
-          local lspconfig = require('lspconfig')
-          lspconfig.pyright.setup{}
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+        -- Configure Pyright
+        vim.lsp.config('pyright', {
+          capabilities = capabilities,
+        })
+
+        -- Configure TypeScript Language Server (only for Node.js projects)
+        vim.lsp.config('ts_ls', {
+          capabilities = capabilities,
+          root_markers = { 'package.json' },
+        })
+
+        -- Configure ESLint (only for Node.js projects)
+        vim.lsp.config('eslint', {
+          capabilities = capabilities,
+          root_markers = { 'package.json' },
+        })
+
+        -- Configure Deno (exclude Node.js projects)
+        vim.lsp.config('denols', {
+          capabilities = capabilities,
+          root_markers = { 'deno.json', 'deno.jsonc', 'deps.ts', 'import_map.json' },
+          init_options = {
+            lint = true,
+            unstable = true,
+            suggest = {
+              hosts = {
+                ['https://deno.land'] = true,
+                ['https://cdn.nest.land'] = true,
+                ['https://crux.land'] = true,
+              }
+            }
+          }
+        })
       end,
     },
     {
       "williamboman/mason.nvim",
-      setup = function()
-        local mason = require('mason')
-        mason.setup{}
+      config = function()
+        require('mason').setup{}
       end,
     },
     {
       "williamboman/mason-lspconfig.nvim",
+      dependencies = {
+        "williamboman/mason.nvim",
+        "neovim/nvim-lspconfig",
+      },
       config = function()
-        local lspconfig = require('lspconfig')
-        local mason_lspconfig = require('mason-lspconfig')
-        mason_lspconfig.setup_handlers({
-          function(server_name)
-          local node_root_dir = lspconfig.util.root_pattern("package.json")
-          local is_node_repo = node_root_dir(vim.api.nvim_buf_get_name(0)) ~= nil
-
-          local opts = {}
-
-          if (server_name == "ts_ls") then
-            if not is_node_repo then
-              return
-            end
-
-            opts.root_dir = node_root_dir
-          elseif server_name "eslint" then
-            if not is_node_repo then
-              return
-            end
-          elseif server_name == "denols" then
-            if is_node_repo then
-              return
-            end
-
-            opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json")
-            opts.init_options = {
-              lint = true,
-              unstable = true,
-              suggest = {
-                hosts = {
-                  ["https://deno.land"] = true,
-                  ["https://cdn.nest.land"] = true,
-                  ["https://crux.land"] = true
-                }
-              }
-            }
-          end
-
-          lspconfig[server_name].setup(opts)
-          end,
-        })
+        require('mason-lspconfig').setup{
+          ensure_installed = { 'pyright', 'ts_ls', 'eslint', 'denols' },
+          -- automatic_enable is true by default, so installed servers will be enabled automatically
+        }
       end,
     },
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "saadparwaiz1/cmp_luasnip",
+    {
+      "hrsh7th/nvim-cmp",
+      dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
+      },
+    },
     {
       "AlessandroYorba/Sierra",
       lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -103,8 +110,6 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
-
-capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
