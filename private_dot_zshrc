@@ -96,35 +96,45 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
-# zsh-defer disabled for now - was causing input lag
-# to re-enable, uncomment the block below and comment out the simple source line
+# Initialize zsh-defer
+source ${ZIM_HOME}/modules/zsh-defer/zsh-defer.plugin.zsh
 
-source ${ZIM_HOME}/init.zsh
+# Plugins to load synchronously (input-related)
+skip_defer=(
+  environment
+  utility
+  input
+  asciiship
+  completion
+  fast-syntax-highlighting
+  zsh-autosuggestions
+  zsh-abbr
+  zsh-autopair
+  zsh-history-substring-search
+  termtitle
+  duration-info
+  git-info
+)
 
-# # Initialize zsh-defer.
-# source ${ZIM_HOME}/modules/zsh-defer/zsh-defer.plugin.zsh
-#
-# # don't defer loading the following plugins
-# skip_defer=(environment utility asciiship zsh-autosuggestions)
-#
-# for zline in ${(f)"$(<$ZIM_HOME/init.zsh)"}; do
-#   if [[ $zline == source* ]]; then
-#     skip_source=0
-#     for skip in "${skip_defer[@]}"; do
-#       if [[ $zline == *"/modules/$skip/"* ]]; then
-#         skip_source=1
-#         break
-#       fi
-#     done
-#     if [[ $skip_source -eq 0 ]]; then
-#       zsh-defer -c "${zline}"
-#     else
-#       eval "${zline}"
-#     fi
-#   else
-#     eval "${zline}"
-#   fi
-# done
+# Deferred: zim-atuin, forgit, zoxide, bun
+for zline in ${(f)"$(<$ZIM_HOME/init.zsh)"}; do
+  if [[ $zline == source* ]]; then
+    skip_source=0
+    for skip in "${skip_defer[@]}"; do
+      if [[ $zline == *"/modules/$skip/"* ]]; then
+        skip_source=1
+        break
+      fi
+    done
+    if [[ $skip_source -eq 0 ]]; then
+      zsh-defer -c "${zline}"
+    else
+      eval "${zline}"
+    fi
+  else
+    eval "${zline}"
+  fi
+done
 
 # ------------------------------
 # Post-init module configuration
@@ -157,8 +167,15 @@ add-abbr
 
 export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 
-eval "$(zoxide init zsh)"
+zsh-defer eval "$(zoxide init zsh)"
 
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+# mise (auto-generate cache if missing)
+if [[ ! -f "$HOME/.config/mise/init.zsh" ]]; then
+  mise activate zsh > "$HOME/.config/mise/init.zsh"
+  zcompile "$HOME/.config/mise/init.zsh"
+fi
+source "$HOME/.config/mise/init.zsh"
+
+# bun completions (deferred)
+zsh-defer -c '[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"'
 
