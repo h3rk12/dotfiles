@@ -12,15 +12,23 @@
     }
   },
   {
-     "context": "Editor && VimControl && !VimWaiting && !menu",
+     "context": "Editor && !menu",
      "bindings": {
-       "ctrl-e": "project_panel::ToggleFocus",
        "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
        "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
        "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+       "ctrl-alt-l": "pane::SplitRight",
+       "ctrl-alt-j": "pane::SplitDown"
      }
    },
+   {
+      "context": "Pane",
+      "bindings": {
+        "cmd-ctrl-1": "workspace::CloseItemInAllPanes",
+        "cmd-ctrl-2": "pane::SplitRight",
+      }
+    },
    {
      "context": "ProjectPanel && not_editing",
      "bindings": {
@@ -40,5 +48,5 @@
        "j": "menu::SelectNext",
        "k": "menu::SelectPrev"
      }
-   }
+   },
 ]
