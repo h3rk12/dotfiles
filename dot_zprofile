@@ -1,4 +1,4 @@
-export VOLTA_HOME="$HOME/.volta"
+export HOMEBREW_FORBIDDEN_FORMULAE="node python python3 pip npm pnpm yarn claude"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_CTRL_R_OPTS="--with-nth 2.."
