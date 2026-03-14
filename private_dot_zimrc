@@ -11,7 +11,7 @@
 # Sets sane Zsh built-in environment options.
 zmodule environment
 # Provides handy git aliases and functions.
-zmodule git
+# zmodule git  # trial: using forgit instead
 # Applies correct bindkeys for input events.
 zmodule input
 # Sets a custom terminal title.
@@ -44,9 +44,9 @@ zmodule completion
 # Modules that must be initialized last
 #
 
-# Fish-like syntax highlighting for Zsh.
-# zsh-users/zsh-syntax-highlighting must be sourced after completion
-zmodule zsh-users/zsh-syntax-highlighting
+# Fish-like syntax highlighting for Zsh (fast version).
+# zdharma-continuum/fast-syntax-highlighting must be sourced after completion
+zmodule zdharma-continuum/fast-syntax-highlighting
 # Fish-like history search (up arrow) for Zsh.
 # zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
@@ -55,10 +55,10 @@ zmodule zsh-users/zsh-autosuggestions
 # }}} End configuration added by Zim install
 
 zmodule romkatv/zsh-defer -d
-zmodule exa
 zmodule olets/zsh-abbr
-zmodule agkozak/zsh-z
-zmodule ohmyzsh/ohmyzsh --root plugins/git
+# zmodule ohmyzsh/ohmyzsh --root plugins/git  # trial: using forgit instead
+zmodule wfxr/forgit
 zmodule joke/zim-mise
 zmodule h3rk12/zim-atuin
+zmodule hlissner/zsh-autopair
 
