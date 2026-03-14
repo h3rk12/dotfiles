@@ -54,4 +54,7 @@ keybind = ctrl+plus=unbind
 keybind = ctrl+minus=unbind
 keybind = ctrl+0=unbind
 
-command = /opt/homebrew/bin/tmux
+keybind = ctrl+i=text:\t
+
+command = /bin/zsh -lc tmux
+
