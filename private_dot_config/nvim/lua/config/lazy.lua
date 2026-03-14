@@ -26,7 +26,11 @@ require("lazy").setup({
   spec = {
     -- import your plugins
     "itchyny/lightline.vim",
-    "justinmk/vim-dirvish",
+    {
+      'stevearc/oil.nvim',
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      opts = {},
+    },
     {
       'neovim/nvim-lspconfig',
       dependencies = {
@@ -102,6 +106,21 @@ require("lazy").setup({
       "AlessandroYorba/Sierra",
       lazy = false, -- make sure we load this during startup if it is your main colorscheme
       priority = 1000, -- make sure to load this before all the other start plugins
+    },
+    {
+      "xiyaowong/transparent.nvim",
+      lazy = false,
+      config = function()
+        require("transparent").setup({
+          extra_groups = {
+            "NormalFloat",
+            "FloatBorder",
+            "NvimTreeNormal",
+            "NvimTreeNormalNC",
+          },
+        })
+        vim.g.transparent_enabled = true
+      end,
     },
   },
   -- Configure any other settings here. See the documentation for more details.
