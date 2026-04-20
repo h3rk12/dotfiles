@@ -28,6 +28,8 @@ brew "uv"
 brew "felixkratz/formulae/borders"
 brew "oven-sh/bun/bun"
 brew "zoxide"
+brew "rtk"
+brew "worktrunk"
 
 cask "1password-cli"
 cask "aerospace"

@@ -13,5 +13,16 @@ esac
    *) echo "abort";;
 esac
 
-{{ end -}}
+ read -n1 -p "Run wt config shell install? (y/N): " yn
+ case "$yn" in
+   [yY]*) wt config shell install;;
+   *) echo "abort";;
+esac
 
+ read -n1 -p "Run rtk init -g? (y/N): " yn
+ case "$yn" in
+   [yY]*) rtk init -g;;
+   *) echo "abort";;
+esac
+
+{{ end -}}
