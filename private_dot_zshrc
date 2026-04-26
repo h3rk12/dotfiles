@@ -140,6 +140,15 @@ done
 # Post-init module configuration
 # ------------------------------
 
+zstyle ':zim:git-info' verbose 'yes'
+
+function _git_hash_precmd() {
+  local hash=$(git rev-parse --short HEAD 2>/dev/null)
+  [[ -n $hash && -n $__GIT_INFO_BRANCH ]] && \
+    __GIT_INFO_BRANCH="${__GIT_INFO_BRANCH} [${hash}]"
+}
+add-zsh-hook precmd _git_hash_precmd
+
 #
 # zsh-history-substring-search
 #
