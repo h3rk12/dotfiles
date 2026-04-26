@@ -46,4 +46,6 @@ cask "google-japanese-ime"
 cask "jordanbaird-ice"
 cask "orbstack"
 cask "spotmenu"
+cask "shottr"
+cask "color-oracle"
 
