@@ -170,6 +170,8 @@ function add-abbr() {
   abbr -q -S -='cd -'
   abbr -q -S ...='../..'
   abbr -q -S ....='../../..'
+  abbr -q -S 'gc!'='git commit -v --amend'
+  abbr -q -S 'gcn!'='git commit -v --no-edit --amend'
 }
 
 add-abbr
