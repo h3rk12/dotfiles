@@ -13,9 +13,9 @@ esac
    *) echo "abort";;
 esac
 
- read -n1 -p "Install vim-herdr-navigation plugin? (y/N): " yn
+ read -n1 -p "Install Herdr plugin and integrations? (y/N): " yn
  case "$yn" in
-   [yY]*) if command -v herdr >/dev/null 2>&1; then herdr plugin install paulbkim-dev/vim-herdr-navigation --yes; else echo "herdr not found; run brew bundle first"; fi;;
+   [yY]*) if command -v herdr >/dev/null 2>&1; then herdr plugin install paulbkim-dev/vim-herdr-navigation --yes; herdr integration install codex; herdr integration install claude; else echo "herdr not found; run brew bundle first"; fi;;
    *) echo "abort";;
 esac
 
