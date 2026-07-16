@@ -9,7 +9,7 @@
 # Built-in themes: catppuccin, terminal, tokyo-night, dracula, nord,
 #                  gruvbox, one-dark, solarized, kanagawa, rose-pine,
 #                  vesper
-# name = "catppuccin"
+name = "terminal"
 
 # Follow host terminal light/dark appearance and switch Herdr UI themes.
 # Existing manual behavior is unchanged unless this is true.
@@ -60,12 +60,12 @@
 # Named punctuation such as minus, comma, ampersand, plus, and backtick is also accepted.
 # Most reliable direct bindings are ctrl+letter, function keys, and explicit modified chords.
 # alt+..., cmd/super, and punctuation-with-modifiers may depend on your terminal/tmux setup.
-# prefix = "ctrl+b"
+prefix = "ctrl+t"
 
 # Prefix-mode actions
 # help = "prefix+?"
 # settings = "prefix+s"
-# detach = "prefix+q"
+detach = ""
 # reload_config = "prefix+shift+r"
 # open_notification_target = "prefix+o"
 # workspace_picker = "prefix+w"
@@ -82,10 +82,10 @@
 # next_agent = ""         # optional, unset by default
 # focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
 # remote_image_paste = "ctrl+v" # only active in herdr --remote; empty disables raw-key image paste
-# new_tab = "prefix+c"
-# rename_tab = "prefix+shift+t"
-# previous_tab = "prefix+p"
-# next_tab = "prefix+n"
+new_tab = "prefix+t"
+rename_tab = "prefix+comma"
+previous_tab = "prefix+ctrl+p"
+next_tab = "prefix+ctrl+n"
 # switch_tab = "prefix+1..9"
 # switch_workspace = ""   # optional indexed binding, e.g. "prefix+shift+1..9"
 # close_tab = "prefix+shift+x"
@@ -100,7 +100,7 @@
 # last_pane = ""          # optional, unset by default; bind e.g. "prefix+tab" for global back-and-forth
 # split_vertical = "prefix+v"
 # split_horizontal = "prefix+minus"
-# close_pane = "prefix+x"
+close_pane = "prefix+d"
 # zoom = "prefix+z"       # legacy alias: fullscreen
 # resize_mode = "prefix+r"
 # toggle_sidebar = "prefix+b"
@@ -113,6 +113,42 @@
 # navigate_pane_down = "j"
 # navigate_pane_up = "k"
 # navigate_pane_right = "l"     # right arrow always focuses the pane to the right
+
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"
+
+[[keys.command]]
+key = "prefix+y"
+type = "shell"
+command = 'pane=$(herdr pane current | jq -r ".result.pane.pane_id"); herdr pane read "$pane" --source visible --lines 1 --format text | pbcopy'
+description = "copy visible line"
+
+[[keys.command]]
+key = "prefix+shift+y"
+type = "shell"
+command = "herdr pane current | jq -r '.result.pane.foreground_cwd // .result.pane.cwd' | pbcopy"
+description = "copy pane cwd"
 
 # Custom commands use the same binding syntax.
 # type = "shell" runs detached in the background.
@@ -157,11 +193,11 @@
 # Capture mouse input for Herdr's mouse UI.
 # Set false to let the terminal handle normal clicks, such as Cmd-clicking URLs.
 # Pane apps like lazygit and btop can still receive mouse when they request it.
-# mouse_capture = true
+mouse_capture = false
 
 # Copy text selected by mouse drag or double-click.
 # Set false to disable mouse text selection and copying.
-# copy_on_select = true
+copy_on_select = false
 
 # Host cursor policy: "auto", "native", or "drawn".
 # "auto" draws Herdr's own cursor on native Windows builds and WSL to avoid ConPTY cursor flicker, and uses the native terminal cursor elsewhere.
@@ -178,20 +214,20 @@
 # redraw_on_focus_gained = true
 
 # Pane scrollback lines to scroll per mouse wheel notch.
-# mouse_scroll_lines = 3
+mouse_scroll_lines = 1
 
 # Ask for confirmation before closing a workspace
 # confirm_close = true
 
 # Ask for a tab name before creating a new tab.
 # Set false to create tabs immediately with generated names.
-# prompt_new_tab_name = true
+prompt_new_tab_name = false
 
 # Draw borders around split panes.
 # pane_borders = true
 
 # Keep split panes visually separated instead of sharing divider borders.
-# pane_gaps = true
+pane_gaps = false
 
 # Show detected/reported agent labels in split pane borders when no manual pane name is set.
 # show_agent_labels_on_pane_borders = false
@@ -224,7 +260,7 @@
 
 # Accent color for highlights, borders, and navigation UI.
 # Accepts: hex (#89b4fa), named colors (cyan, blue, magenta), or rgb(r,g,b)
-# accent = "cyan"
+accent = "#00af87"
 
 # Background notification popup delivery
 [ui.toast]

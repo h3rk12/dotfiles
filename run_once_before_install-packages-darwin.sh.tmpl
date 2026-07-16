@@ -13,6 +13,12 @@ esac
    *) echo "abort";;
 esac
 
+ read -n1 -p "Install vim-herdr-navigation plugin? (y/N): " yn
+ case "$yn" in
+   [yY]*) if command -v herdr >/dev/null 2>&1; then herdr plugin install paulbkim-dev/vim-herdr-navigation --yes; else echo "herdr not found; run brew bundle first"; fi;;
+   *) echo "abort";;
+esac
+
  read -n1 -p "Run wt config shell install? (y/N): " yn
  case "$yn" in
    [yY]*) wt config shell install;;
